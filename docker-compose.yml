@@ -1,0 +1,21 @@
+services:
+  elementsd-regtest:
+    image: blockstream/elementsd:23.3.0
+    container_name: elementsd-regtest
+    ports:
+      - "19443:18443"
+      - "19444:18444"
+    command:
+      - elementsd
+      - -chain=regtest
+      - -rpcbind=0.0.0.0
+      - -rpcallowip=0.0.0.0/0
+      - -rpcuser=user
+      - -rpcpassword=pass
+      - -fallbackfee=0.00001
+      - -validatepegin=0
+    volumes:
+      - elementsd_regtest_data:/data
+
+volumes:
+  elementsd_regtest_data:
